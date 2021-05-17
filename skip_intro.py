@@ -30,9 +30,16 @@ if __name__=="__main__":
         if (not fc.same_frame(current_frame, compare_frame)):
             frame_index -= frame_step
             frame_step = math.floor(frame_step/2)
+            print('New step size ' + frame_step) ##
+            # Error: can only concatenate str (not "int") to str ##
         else:
             frame_index += frame_step
 
     # Return last matching frame
 
     print("Frame " + frame_index) ##
+    # Error: can only concatenate str (not "int") to str ##
+    last_matching_frame = fg.get_nth_frame(current_video, frame_index) ##
+    cv2.imwrite('../../output/last_matching_frame.jpg',last_matching_frame) ##
+    first_mismatching_frame = fg.get_nth_frame(current_video, frame_index + 1) ##
+    cv2.imwrite('../../output/first_mismatching_frame.jpg',first_mismatching_frame) ##
