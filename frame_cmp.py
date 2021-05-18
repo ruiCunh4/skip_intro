@@ -1,7 +1,7 @@
 import cv2
 
 BLACK_TRESHOLD = 50 # Brightness
-SAME_FRAME_TOLERANCE = 0.50 # Percent
+SAME_FRAME_TOLERANCE = 0.99 # Similarity Percentage
 
 
 
@@ -16,7 +16,7 @@ def same_frame(frame_1, frame_2):
     for row in frame_subtract:
         for pixel in row:
             b,g,r = pixel
-            brightness = r + g + b
+            brightness = int(r) + int(g) + int(b)
             pixel_count += 1
             if (brightness < BLACK_TRESHOLD):
                 black_pixel_count += 1
